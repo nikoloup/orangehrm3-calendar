@@ -26,6 +26,10 @@ viewLeaveListSuccess:
   layout: freshorange
   javascripts:    [-*]
   stylesheets:    [-*]
+viewLeaveCalendarSuccess:
+  layout: freshorange
+  javascripts:    [-*]
+  stylesheets:    [-*]
 defineLeavePeriodSuccess:
   layout: freshorange
   javascripts:    [-*]

@@ -1,0 +1,104 @@
+#calendar, #legend {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Arial,Helvetica,sans-serif;
+
+}
+
+#calendar{
+	display: block;
+}
+
+#table_calendar{
+	display: none;
+}
+
+#calendar, #table_calendar{
+	margin-top : 20px;
+}
+
+#table_calendar table{
+	width : 100%;
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: 800;
+	margin-top: 20px;
+	table-layout: fixed;
+}
+
+#table_calendar table,
+#table_calendar th,
+#table_calendar td{
+	border: 1px solid;
+	border-color: #DDDDDD;
+	padding: 5px;
+}
+
+#table_calendar td:not(.firstCol){
+	text-align: center;
+}
+
+#table_calendar th,
+#table_calendar td{
+	width: 5px;
+}
+
+#table_calendar th{
+	background-color: #F28C38;
+}
+
+#table_calendar td.firstCol,
+#table_calendar th.firstCol{
+	width: 150px;
+}
+
+#table_calendar td.weekend,
+#table_calendar th.weekend{
+	background-color: #D17A32;
+}
+
+#table_calendar td.holiday,
+#table_calendar th.holiday{
+        background-color: #F28C38;
+}
+
+#table_calendar td.today,
+#table_calendar th.today{
+        background-color: #71FA6A;
+}
+
+#table_calendar td.today-year{
+       border: 3px solid #71FA6A;
+}
+
+#table_calendar td.dayOffset{
+	background-color: #EDEDED;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,.5) 3px, rgba(255,255,255,.5) 10px);
+}	
+
+#controls {
+	text-align: center;
+}
+
+#switchButton {
+	float: left;
+}
+
+#nav_buttons{
+	float: right;
+}
+
+#nav_buttons input{
+	background-color: #5496FF;
+}
+
+#nav_buttons input.hover{
+	background-color: #3B79DB;
+}
+
+#dateHeader {
+	color: #5D5D5D;
+	font-size: 2em;
+	margin: 0 auto;
+}
+

@@ -1,3 +1,5 @@
+//nikoloup
+
 $(document).ready(function() {
     
     var validator = $("#frmFilterLeave").validate({
@@ -28,17 +30,17 @@ $(document).ready(function() {
                     }
                 }
             }
-        },
-        messages: {
-            'leaveList[calFromDate]' : {
-                valid_date: lang_invalidDate
-            },
-            'leaveList[calToDate]' : {
-                valid_date: lang_invalidDate ,
-                date_range: lang_dateError
-            }
+        }//,
+        //messages: {
+            //'leaveList[calFromDate]' : {
+                //valid_date: lang_invalidDate
+            //},
+            //'leaveList[calToDate]' : {
+                //valid_date: lang_invalidDate ,
+                //date_range: lang_dateError
+            //}
 
-        }
+        //}
 
     });
 

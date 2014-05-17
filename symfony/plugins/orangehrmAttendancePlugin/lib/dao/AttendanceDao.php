@@ -524,6 +524,73 @@ class AttendanceDao {
       
     }
 
+     /**
+     *
+     * @param int $employeeId
+     * @param string $employeementStatus
+     * @param int $subDivision    
+     * @param date $dateFrom
+     * @param date $dateTo
+     * @param string $orderByParameters
+     * @return array 
+     */
+
+     public function searchAttendanceRecordsAdvanced($employeeIds = null, $employeementStatus = null, $subDivision = null, $dateFrom
+= null , $dateTo = null, $orderByParameters = null ){
+
+         $q = Doctrine_Query::create()
+                 ->select("e.emp_number, e.termination_id, e.emp_firstname, e.emp_middle_name, e.emp_lastname, a.punch_in_user_time as in_date_time, a.punch_out_user_time as out_date_time, punch_in_note, punch_out_note, TIMESTAMPDIFF(MINUTE, a.punch_in_user_time, a.punch_out_user_time) as duration")
+                ->from("AttendanceRecord a")
+                ->leftJoin("a.Employee e");
+	
+	if( $orderByParameters != null ){
+		$q->orderBy($orderByParameters[0], $orderByParameters[1]);
+	} else {
+		$q->orderBy('a.punch_in_user_time DESC');
+	}
+
+        if( $employeeIds != null){
+
+            if(is_array($employeeIds)){
+                $q->andWhereIn("e.emp_number", $employeeIds);
+            } else {
+                $q->andWhere(" e.emp_number = ?", $employeeIds);
+            }
+        }
+
+        if( $employeementStatus == 'active'){
+            $q->andWhere("e.termination_id IS NULL");
+        }
+
+        if( $subDivision > 0){
+
+            $companyService = new CompanyStructureService();
+            $subDivisions = $companyService->getCompanyStructureDao()->getSubunitById($subDivision);
+
+            $subUnitIds = array($subDivision);
+             if (!empty($subDivisions)) {
+                $descendents = $subDivisions->getNode()->getDescendants();
+
+                foreach($descendents as $descendent) {
+                    $subUnitIds[] = $descendent->id;
+                }
+            }
+	
+            $q->andWhereIn("e.work_station", $subUnitIds);
+        }
+
+        if( $dateFrom != null){
+            $q->andWhere("a.punch_in_user_time >=?", $dateFrom);
+        }
+
+        if( $dateTo != null){
+            $q->andWhere("a.punch_out_user_time <=?", $dateTo);
+        }
+
+        $result = $q->execute(array(), Doctrine::HYDRATE_SCALAR);
+        return $result;
+
+    }
 }
 
 

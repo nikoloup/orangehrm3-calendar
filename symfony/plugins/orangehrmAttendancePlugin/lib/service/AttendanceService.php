@@ -268,6 +268,22 @@ class AttendanceService {
         return $this->getAttendanceDao()->searchAttendanceRecords($employeeId, $employeementStatus, $subDivision, $dateFrom, $dateTo );
     }
 
+     /**
+     *
+     * @param int $employeeId
+     * @param string $employeementStatus
+     * @param int $subDivision    
+     * @param date $dateFrom
+     * @param date $dateTo
+     * @param string $orderByParameters
+     * @return array 
+     */
+    public function searchAttendanceRecordsAdvanced($employeeId = null, $employeementStatus = null, $subDivision = null, $dateFrom =
+ null , $dateTo = null, $orderByParameters = null ){
+        return $this->getAttendanceDao()->searchAttendanceRecordsAdvanced($employeeId, $employeementStatus, $subDivision, $dateFrom,
+ $dateTo, $orderByParameters );
+    }
+
 }
 
 ?>
