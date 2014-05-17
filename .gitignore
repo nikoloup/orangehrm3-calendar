@@ -1,0 +1,15 @@
+/symfony/cache/*
+/symfony/log/*
+symfony/web*
+config/databases.yml
+config/propel.ini
+data/sql/*
+/symfony/lib/filter/doctrine/base/Base*
+/symfony/lib/filter/doctrine/*Plugin/base/Base*
+/symfony/lib/form/doctrine/base/Base*
+/symfony/lib/form/doctrine/*Plugin/base/Base*
+/symfony/lib/model/doctrine/base/Base*
+/symfony/lib/model/doctrine/*Plugin/base/Base*
+/symfony/lib/model/om/*
+/symfony/lib/model/map/*
+*.patch
